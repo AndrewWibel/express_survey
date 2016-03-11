@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey Form Index</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var socket = io.connect();
+
+				$('button').click(function(){
+					socket.emit("posting_form", user_info = {
+												name: req.body.name,
+												location: req.body.location,
+												language: req.body.language,
+												comments: req.body.comments
+												})
+				})
+			})
+		</script>
+
+</head>
+<body>
+<div>
+	<form action='/result' method='post'>
+		Your Name: <input type='text' name='name'></input>
+		Dojo Location: 	<select name='location'>
+							<option name='mountain_view'>Mountain View</option>
+							<option name='chicago'>Chicago</option>
+							<option name='dc'>Washington D.C</option>
+						</select>
+		Favorite Language: 	<select name='language'>
+								<option name='javascript'>Javascript</option>
+								<option name='ruby'>Ruby</option>
+								<option name='python'>Python</option>
+							</select>
+		Comments (Optional):<textarea rows='4' cols='50' name='comments'></textarea>					
+		<input type='submit' value='Submit'></input>
+	</form>
+</div>
+</body>
+</html>

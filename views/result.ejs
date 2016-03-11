@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey Result</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var socket = io.connect();
+
+				socket.on('server_response', function(data){
+					console.log(data)
+				})
+			})
+		</script>
+</head>
+<body>
+<div>
+	<h2>Submitted Information</h2>
+
+	<p>Name: <%= survey.name %></p>
+	<p>Dojo Location: <%= survey.location %></p>
+	<p>Favorite Language: <%= survey.language %></p>
+	<p>Comments: <%= survey.comments %></p>
+
+	<button><a href="/">Go Back</a></button>
+</div>
+</body>
+</html>
